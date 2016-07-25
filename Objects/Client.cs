@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System;
 
-namspace Salon
+namespace Salon
 {
   public class Client
   {
@@ -34,64 +34,64 @@ namspace Salon
         bool stylistIdEquality = this.GetStylistId() == newClient.GetStylistId();
         return (idEquality && nameEquality && notesEquality && stylistIdEquality);
       }
-      public int GetId()
-      {
-        return _id;
-      }
-      public string GetName()
-      {
-        return _name;
-      }
-      public void SetName(string newName)
-      {
-        _name = newName;
-      }
-      public string GetNotes()
-      {
-        return _notes;
-      }
-      public void SetNotes(string newNotes)
-      {
-        _notes = newNotes;
-      }
-      public int GetStylistId()
-      {
-        return _stylistId
-      }
-      public void SetStylistId(string newStylistId)
-      {
-        _stylistId = newStylistId;
-      }
-      public static List<Client> GetAll()
-      {
-        List<Client> allClients = new List<Client>{};
+    }
+    public int GetId()
+    {
+      return _id;
+    }
+    public string GetName()
+    {
+      return _name;
+    }
+    public void SetName(string newName)
+    {
+      _name = newName;
+    }
+    public string GetNotes()
+    {
+      return _notes;
+    }
+    public void SetNotes(string newNotes)
+    {
+      _notes = newNotes;
+    }
+    public int GetStylistId()
+    {
+      return _stylistId;
+    }
+    public void SetStylistId(int newStylistId)
+    {
+      _stylistId = newStylistId;
+    }
+    public static List<Client> GetAll()
+    {
+      List<Client> allClients = new List<Client>{};
 
-        SqlConnection conn = DB.Connection();
-        SqlDataReader rdr = null;
-        conn.Open();
+      SqlConnection conn = DB.Connection();
+      SqlDataReader rdr = null;
+      conn.Open();
 
-        SqlCommand cmd = new SqlCommand("SELECT * FROM client", conn);
-        rdr = cmd.ExecuteReader();
+      SqlCommand cmd = new SqlCommand("SELECT * FROM client", conn);
+      rdr = cmd.ExecuteReader();
 
-        while(rdr.Read())
-        {
-          int clientId = rdr.GetInt32(0);
-          string clientName = rdr.GetString(1);
-          string clientNotes = rdr.GetString(2);
-          int clientStylistId = rdr.GetInt32(3);
-          Client newClient = new Client(clientName, clientNotes, clientStylistId, clientId);
-          allClients.Add(newClient);
-        }
-        if(rdr != null)
-        {
-          rdr.Close();
-        }
-        if(conn != null)
-        {
-          conn.Close();
-        }
-        return allClients;
+      while(rdr.Read())
+      {
+        int clientId = rdr.GetInt32(0);
+        string clientName = rdr.GetString(1);
+        string clientNotes = rdr.GetString(2);
+        int clientStylistId = rdr.GetInt32(3);
+        Client newClient = new Client(clientName, clientNotes, clientStylistId, clientId);
+        allClients.Add(newClient);
       }
+      if(rdr != null)
+      {
+        rdr.Close();
+      }
+      if(conn != null)
+      {
+        conn.Close();
+      }
+      return allClients;
     }
   }
 }
