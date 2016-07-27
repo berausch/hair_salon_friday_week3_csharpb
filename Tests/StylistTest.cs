@@ -10,7 +10,7 @@ namespace Salon
   {
     public StylistTest()
     {
-      DBConfiguration.ConnectionString = "Data Source=DEUXEXMACHINA\\SQLEXPRESS;Initial Catalog=hair_salon_test;Integrated Security=SSPI;";
+      DBConfiguration.ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=hair_salon_test;Integrated Security=SSPI;";
     }
 
     [Fact]

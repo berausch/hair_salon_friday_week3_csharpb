@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Client Edit</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+  </head>
+  <body>
+  <h1>Edit Client</h1>
+  <hr />
+  <h2>Edit client: @Model.GetName()</h2>
+  <form action="/client/edit/@Model.GetId()" method="post">
+    <input type="hidden" name="_method" value="PATCH">
+    <input name="client-id" type="hidden" value="@Model.GetId()">
+    <label for="client-name">Client name</label>
+    <input id="client-name" name="client-name" type="text">
+    <label for="client-notes">Client notes Change from: @Model.GetNotes()</label>
+    <input id="client-notes" name="client-notes" type="text">
+    <button type="submit">Submit</button>
+  </form>
+  <h4><a href="/">Return home</a></h4>
+  </body>
+</html>
