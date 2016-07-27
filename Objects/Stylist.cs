@@ -23,7 +23,7 @@ namespace Salon
         }
         else
         {
-          Stylist newStylistId = (Stylist) otherStylist;
+          Stylist newStylist = (Stylist) otherStylist;
           bool idEquality = this.GetId() == newStylist.GetId();
           bool nameEquality = this.GetName() == newStylist.GetName();
           return (idEquality && nameEquality);
@@ -44,7 +44,7 @@ namespace Salon
     }
     public static List<Stylist> GetAll()
     {
-      List<> allStylists = new List<Stylist>{};
+      List<Stylist> allStylists = new List<Stylist>{};
 
       SqlConnection conn = DB.Connection();
       SqlDataReader rdr = null;
@@ -142,7 +142,7 @@ namespace Salon
       }
       return foundStylist;
     }
-    public List<Client> GetsClients()
+    public List<Client> GetClients()
     {
       SqlConnection conn = DB.Connection();
       SqlDataReader rdr = null;
@@ -160,8 +160,8 @@ namespace Salon
       {
         int clientId = rdr.GetInt32(0);
         string clientName = rdr.GetString(1);
-        string clientNotes = rdr.GetString(1);
-        int clientStylistId = rdr.GetInt32(2);
+        string clientNotes = rdr.GetString(2);
+        int clientStylistId = rdr.GetInt32(3);
 
         Client newClient = new Client(clientName, clientNotes, clientStylistId,  clientId);
         clients.Add(newClient);
